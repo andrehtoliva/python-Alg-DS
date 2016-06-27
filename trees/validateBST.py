@@ -37,35 +37,27 @@ class BinaryTree(object):
     def getRootVal(self):
         return self.key
         
-r = BinaryTree(5)
-r.insertLeft(4)
-r.insertLeft(3)
-r.insertRight(7)
-r.insertRight(6)
+tree_vals = []        
 
 def inorder(tree):
     
     if tree != None:
         inorder(tree.getLeftChild())
-        print(tree.getRootVal())
+        tree_vals.append(tree.getRootVal())
         inorder(tree.getRightChild())
         
-def postorder(tree):
+def validateBST(tree_vals):
+    return tree_vals == sorted(tree_vals)
     
-    if tree != None:
-        postorder(tree.getLeftChild())
-        postorder(tree.getRightChild())
-        print(tree.getRootVal())
         
-def preorder(tree):
-    
-    if tree != None:
-        print(tree.getRootVal())
-        preorder(tree.getLeftChild())
-        preorder(tree.getRightChild())
         
+        
+r = BinaryTree(5)
+r.insertLeft(4)
+r.insertLeft(3)
+r.insertRight(6)
+r.insertRight(7)
+
 inorder(r)
-print ""
-postorder(r)
-print ""
-preorder(r)
+print validateBST(tree_vals)
+
